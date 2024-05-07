@@ -1,4 +1,10 @@
-import type { MetaFunction } from "@remix-run/node";
+import { useLoaderData } from '@remix-run/react';
+import { redirect, json, MetaFunction, ActionFunctionArgs } from '@remix-run/node';
+import { Prisma } from '@prisma/client';
+import { db } from '../utils/db.server';
+import NewMessage from '../components/NewMessage';
+import MessageList from '../components/MessageList';
+import { getVisitors } from '../data/messages';
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,34 +14,37 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const visitors = useLoaderData();
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div>
+      <div>
+        <NewMessage />
+      </div>
+      <div>
+        <MessageList visitors={visitors}/>
+        </div>
     </div>
   );
-}
+};
+
+export const loader = async () => {
+  const visitors = await getVisitors();
+  return visitors;
+};
+
+export async function action({ request }: ActionFunctionArgs) {
+  const formData = await request.formData();
+  const messageData: {name: string, email: string, title: string, message: string} = Object.fromEntries(formData);  
+  const body = messageData;
+    let data: Prisma.visitorsCreateInput = {
+      name: body.name,
+      email: body.email,
+      title: body.title,
+      message: body.message
+    }
+    await db.visitors.create({
+      data: data,
+    });
+    return redirect('/');
+  }
+
