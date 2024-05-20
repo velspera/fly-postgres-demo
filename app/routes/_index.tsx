@@ -16,13 +16,13 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const visitors = useLoaderData();
   return (
-    <div>
-      <div>
+    <div className="grid md:grid-cols-3 md:gap-4">
+      <div className="">
         <NewMessage />
       </div>
-      <div>
+      <div className="md:col-span-2">
         <MessageList visitors={visitors}/>
-        </div>
+      </div>
     </div>
   );
 };
@@ -46,5 +46,4 @@ export async function action({ request }: ActionFunctionArgs) {
       data: data,
     });
     return redirect('/');
-  }
-
+}

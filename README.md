@@ -1,36 +1,8 @@
-# Welcome to Remix + Vite!
+# Remix + Postgres Demo Application - Fly.io
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
+Welcome! This demo application was built as part of a basic walkthrough on launching Remix applications with Fly Postgres on Fly.io. Feel free to clone this project and follow along with us, or use it as a starting point for other projects.
 
-## Development
-
-Run the Vite dev server:
-
-```shellscript
-npm run dev
-```
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
+## About the demo
+- Remix version 2.9.1
+- Database ORM with [Prisma](https://www.prisma.io/)
+- Basic styling with [Tailwind](https://tailwindcss.com/)
