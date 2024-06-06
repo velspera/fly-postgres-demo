@@ -9,7 +9,7 @@ function MessageList({visitors}: any) {
                   <article>
                       <header>
                           <div className="flow-root">
-                          <div className="min-h-6 min-w-6 bg-stone-50 text-violet-700 float-right float-top flex items-center justify-center font-bold rounded-2xl"><p className="text-xs">X</p></div>
+                            <div className="min-h-6 min-w-6 bg-stone-50 text-violet-700 float-right float-top flex items-center justify-center font-bold rounded-2xl"><p className="text-xs">X</p></div>
                             <h2 className="text-lg font-semibold leading-tigh flex items-center">
                               <div className="min-h-12 min-w-12 bg-stone-50/75 float-left mr-2 flex items-center justify-center rounded-3xl">
                                 <span className="text-sm mb-1"># </span>
