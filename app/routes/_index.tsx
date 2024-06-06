@@ -8,8 +8,8 @@ import { getVisitors } from '../data/messages';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Birthday Guestbook: Elizabeth Montgomery" },
+    { name: "description", content: "Happy Birthday, Elizabeth!" },
   ];
 };
 
